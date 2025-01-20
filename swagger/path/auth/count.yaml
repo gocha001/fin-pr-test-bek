@@ -1,0 +1,37 @@
+tags:
+  - Auth
+summary: Count user
+operationId: countUser
+description: Number of users
+security: []
+responses:
+  '200':
+    description: Count user
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Number of customers successfully received on web-platform!
+            data:
+              type: object
+              required:
+                - users
+              properties:
+                users:
+                  description: Number of users
+                  type: integer
+                  example: 16
+  '400':
+    $ref: '../../components/responses/auth/400.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'

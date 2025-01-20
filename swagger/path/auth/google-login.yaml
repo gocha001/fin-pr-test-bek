@@ -1,0 +1,53 @@
+tags:
+  - Auth
+summary: Login via Google OAuth
+operationId: googleLogin
+description: Authenticate a user using Google OAuth. This endpoint verifies the token received from Google and logs the user in, issuing a new access token for subsequent authenticated requests.
+security: []
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - code
+        properties:
+          code:
+            description: The authorization code received from Google after user login.
+            type: string
+            example: eyJzdWIiOiI2NzgyY2I4ODQ4MDlhNjFhYjk2YzQyOGYiLCJlbWFpbCI6ImdvY2hha2luZHJAdWtyLm5ldCIsImlhdCI6MTczNjY0MzQyMiwiZXhwIjoxNzM2NjQzNzIyfQ
+responses:
+  '200':
+    description: Successfully logged in via Google OAuth and issued a new access token.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Successfully logged in via Google OAuth!
+            data:
+              type: object
+              required:
+                - accessToken
+                - user
+              properties:
+                accessToken:
+                  description: The access token for the authenticated user.
+                  type: string
+                  example: NOfB2S2e0OVHjvJb41gxPf4Rc6gwZmblEgiC4axh
+                user:
+                  type: object
+                  $ref: ../../components/schemas/user.yaml
+  '400':
+    $ref: ../../components/responses/400.yaml
+  '500':
+    $ref: ../../components/responses/500.yaml

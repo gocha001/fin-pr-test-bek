@@ -1,0 +1,79 @@
+tags:
+  - Water
+summary: Day cards
+operationId: dayCard
+description: Total day water cards
+security:
+  - bearerAuth: []
+parameters:
+  - in: query
+    name: date
+    required: true
+    schema:
+      type: integer
+      minimum: 1704060000000
+      description: Event date in Unix timestamp (milliseconds since epoch)
+      example: 1705000000000
+responses:
+  '200':
+    description: Total day water cards
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: Total day water cards
+            data:
+              type: object
+              required:
+                - date
+                - totalDayWater
+                - consumedWaterData
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  pattern: ^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}Z$
+                  example: 2025-01-05T17:14
+                totalDayWater:
+                  description: Total day water cards
+                  type: number
+                  example: 50
+                consumedWaterData:
+                  description: Cards per day
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - date
+                      - amount
+                      - _id
+                    properties:
+                      date:
+                        type: integer
+                        minimum: 1704060000000
+                        description: Event date in Unix timestamp (milliseconds since epoch)
+                        example: 1705000000000
+                      amount:
+                        description: Amount of water
+                        type: number
+                        example: 50
+                      _id:
+                        type: string
+                        example: 6776a2cecf4ab2a20b383055
+  '401' :
+    $ref: '../../components/responses/water/401.yaml'
+  '404' :
+    $ref: '../../components/responses/water/404.yaml'
+  '500':
+    $ref: '../../components/responses/500.yaml'
+

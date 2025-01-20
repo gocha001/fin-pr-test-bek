@@ -1,0 +1,63 @@
+tags:
+  - Water
+summary: Editing a water map
+operationId: editCard
+description: Editing a water map
+security:
+  - bearerAuth: []
+parameters:
+  - in: path
+    name: id
+    required: true
+    schema:
+      type: string
+      example: '65ca67e7ae7f10c88b598384'
+requestBody:
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - date
+          - amount
+        properties:
+          date:
+            type: integer
+            minimum: 1704060000000
+            description: Event date in Unix timestamp (milliseconds since epoch)
+            example: 1705000000000
+          amount:
+            description: Amount of water
+            type: number
+            minimum: 50
+            maximum: 5000
+            example: 50
+responses:
+  '201':
+    description: Editing a water map
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: Successfully patched a water card!
+            data:
+              type: object
+              $ref: ../../../components/schemas/water.yaml
+  '400' :
+    $ref: '../../../components/responses/water/400.yaml'
+  '401' :
+    $ref: '../../../components/responses/water/401.yaml'
+  '404' :
+    $ref: '../../../components/responses/water/404.yaml'
+  '500':
+    $ref: '../../../components/responses/500.yaml'
