@@ -57,8 +57,8 @@ export const loginUserController = async (req, res) => {
       user: {
         userId: user._id,
         email: user.email,
-        name: user.name || user.email.split('@')[0], 
-        gender: user.gender, 
+        name: user.name || user.email.split('@')[0],
+        gender: user.gender,
         avatarURL: user.avatarURL,
         desiredVolume: user.desiredVolume,
         weight: user.weight,
@@ -71,6 +71,7 @@ export const loginUserController = async (req, res) => {
 
 //--------------------refreshUserSessionController--------------------
 export const refreshSessionController = async (req, res) => {
+  console.log(req.cookies.refreshToken);
   const { session, user } = await refreshUsersSessionService({
     sessionId: req.cookies.sessionId,
     refreshToken: req.cookies.refreshToken,
@@ -195,7 +196,7 @@ export const getCurrentUserController = async (req, res) => {
     message: 'User fetched successfully',
     user: {
       ...user.toJSON(),
-      name: user.name || user.email.split('@')[0], 
+      name: user.name || user.email.split('@')[0],
     },
   });
 };
