@@ -11,7 +11,7 @@
   },
   "servers": [
     {
-      "url": "https://water-tracker-backend-guwj.onrender.com",
+      "url": "https://fin-pr-test-bek.onrender.com",
       "description": "Production server"
     },
     {
