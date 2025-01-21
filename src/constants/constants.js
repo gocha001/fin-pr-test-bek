@@ -21,7 +21,7 @@ export const SMTP = {
     SMTP_FROM: env('SMTP_FROM'),
 };
 
-export const accessTokenLifeTime = 1000 * 60 * 15; // 15 minutes
+export const accessTokenLifeTime = 1000 * 60; // 1 minutes
 // export const accessTokenLifeTime = 1000 * 60 * 60 * 3;
 export const refreshTokenLifeTime = 1000 * 60 * 60 * 24 * 30; // 30 days
 
