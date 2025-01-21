@@ -12,7 +12,7 @@ tags:
   - name: Auth
     description: Authentication and password reset operations.
 servers:
-  - url: https://water-tracker-backend-guwj.onrender.com
+  - url: https://fin-pr-test-bek.onrender.com
     description: Production server
   - url: http://127.0.0.1:3000
     description: Development server
