@@ -16,8 +16,8 @@ export const setupServer = () => {
 
   app.use(
     cors({
-      // origin: 'https://fin-pr-test-front.vercel.app',
-      origin: ' http://localhost:5173/',
+      origin: 'https://fin-pr-test-front.vercel.app',
+      // origin: ' http://localhost:5173',
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
       credentials: true,
     }),
